@@ -1,0 +1,48 @@
+{% extends "wagtailadmin/base.html" %}
+{% load wagtailadmin_tags wagtailcore_tags static i18n %}
+
+
+{% block extra_css %}
+<style>
+.logo {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+  
+.logo a {
+color: #fff;
+}
+
+</style>  
+{% endblock %}
+
+{% comment %} 
+{% block branding_logo %}
+{% with logo=settings.base.SiteSettings.logo %}
+<h1 class="logo">
+
+    <a>
+      {% if logo %}
+      {{logo}}
+      {% else %}
+      Scipio
+      {% endif %}
+    </a>
+</h1>
+{% endwith %}
+{% endblock %}
+ {% endcomment %}
+
+{% block branding_logo %}
+<h1 class="logo">
+
+    <a>
+      <img src="{% static 'assets/img/logo.svg' %}" alt="">
+    </a>
+</h1>
+{% endblock %}

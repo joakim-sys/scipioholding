@@ -1,0 +1,43 @@
+{% load navigation_tags wagtailcore_tags static %}
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top {% if request.path == '/' %}{% else %}header-inner-pages{% endif %}">
+  <div class="container d-flex align-items-center justify-content-between">
+
+    <!-- Uncomment below if you prefer to use a text logo -->
+    
+    <!-- 
+      <h1 class="logo">
+      <a href="/">
+        {% if settings.base.SiteSettings.logo %}
+        {{settings.base.SiteSettings.logo}}
+        {% else %}
+        SCIPIO HOLDING
+        {% endif %}
+      </a>
+    </h1>
+   -->
+
+    <a href="/" class="logo"><img src="{% static 'assets/img/logo.svg' %}" alt="" class="img-fluid"></a>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        {% get_site_root as site_root %}
+
+        <!-- Uncomment below if you prefer to show the index(home link) within the navbar -->
+        <!--         
+            {% if request.path == '/' %}
+            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>        
+            {% else %}
+            <li><a class="nav-link" href="/">Home</a></li>
+            {% endif %}
+        -->
+
+        {% top_menu parent=site_root calling_page=self %}
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+    <!-- .navbar -->
+  </div>
+</header>
+<!-- End Header -->

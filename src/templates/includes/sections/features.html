@@ -1,0 +1,99 @@
+{% load wagtailcore_tags %}
+
+{% with features=page.features.all %}
+<!-- ======= Features Section ======= -->
+<section id="features" class="features">
+  <div class="container">
+    <div class="row">
+      {% if features %}
+      {% for feature in features %}
+      <div class="col-lg-3 col-md-4 col-6 col-6">
+        <div class="icon-box">
+          <i class="{{feature.icon}}" style="color: {% if feature.color %} {{feature.color}}; {% else %}#e80368;{% endif %} "></i>
+          {% if feature.link %}
+          <h3><a href="{% pageurl feature.link %}">{{feature.name}}</a></h3>
+          {% else %}
+          <h3>{{feature.name}}</h3>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+        <div class="col-lg-3 col-md-4 col-6 col-6">
+          <div class="icon-box">
+            <i class="ri-map-pin-line" style="color: #3498db;"></i>
+            <h3><a href="#">Automatic Navigation</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="icon-box">
+            <i class="ri-article-line" style="color: #27ae60;"></i>
+            <h3><a href="#">Blogging Features</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="ri-file-text-line" style="color: #e67e22;"></i>
+            <h3><a href="#">Customizable Form</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4 mt-lg-0">
+          <div class="icon-box">
+            <i class="ri-bar-chart-2-line" style="color: #e74c3c;"></i>
+            <h3><a href="#">Marketing Professionals</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-layout-masonry-line" style="color: #9b59b6;"></i>
+            <h3><a href="#">Responsive Design</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-gradienter-line" style="color: #ffa76e;"></i>
+            <h3><a href="">Eiusmod Tempor</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-paint-brush-line" style="color: #f39c12;"></i>
+            <h3><a href="#">Visual Customization</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-code-box-line" style="color: #2ecc71;"></i>
+            <h3><a href="#">Clean Codebase</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-pie-chart-line" style="color: #e74c3c;"></i>
+            <h3><a href="#">Analytics Integration</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-time-line" style="color: #27ae60;"></i>
+            <h3><a href="#">Time-Efficient</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-brush-2-line" style="color: #3498db;"></i>
+            <h3><a href="#">Icon Customization</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
+          <div class="icon-box">
+            <i class="ri-global-line" style="color: #9b59b6;"></i>
+            <h3><a href="">Multi-Language Support</a></h3>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<!-- End Features Section -->
+{% endwith %}

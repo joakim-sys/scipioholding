@@ -1,0 +1,98 @@
+{% load wagtailcore_tags navigation_tags static %}
+
+{% with logo=settings.base.GenericSettings.logo phone=settings.base.GenericSettings.phone email=settings.base.GenericSettings.email %}
+<!-- ======= Footer ======= -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 footer-contact">
+          <h3>
+            {% if logo %}
+            {{logo}}
+            {% else %}
+    <img src="{% static 'assets/img/logo.svg' %}" alt="" class="img-fluid">
+    <!-- Scipio -->
+            {% endif %}
+          </h3>
+        </div>
+
+        <div class="col-lg-2 col-md-6 footer-links">
+          <h4>{% get_footer_links_one_title %}</h4>
+
+          <ul>
+            {% get_footer_links_one %}
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>{% get_footer_links_two_title %}</h4>
+          <ul>
+            {% get_footer_links_two %}
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-6 footer-newsletter">
+          <h4>{% get_footer_subscribe_email_title %}</h4>
+          <p>
+            {% get_footer_subscribe_email_body %}
+          </p>
+          <form action="/" method="get">
+            <input type="email" name="email" /><input
+              type="submit"
+              value="Submit"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container d-md-flex py-4">
+    <div class="me-md-auto text-center text-md-start">
+      <div class="copyright">
+        &copy; Copyright
+        <strong><span>
+          {% if logo %}
+          {{logo}}
+          {% else %}
+          Scipio
+          {% endif %}
+        </span></strong
+        >. All Rights Reserved
+      </div>
+    </div>
+    <div class="social-links text-center text-md-right pt-3 pt-md-0">
+      <a href="{{settings.base.GenericSettings.twitter_url}}" class="twitter"
+        ><i class="bx bxl-twitter"></i
+      ></a>
+      <a href="{{settings.base.GenericSettings.facebook_url}}" class="facebook"
+        ><i class="bx bxl-facebook"></i
+      ></a>
+      <a
+        href="{{settings.base.GenericSettings.instagram_url}}"
+        class="instagram"
+        ><i class="bx bxl-instagram"></i
+      ></a>
+      {% comment %}
+      <a href="{{settings.base.GenericSettings.skype_url}}" class="google-plus"
+        ><i class="bx bxl-skype"></i
+      ></a>
+      {% endcomment %}
+      <a href="{{settings.base.GenericSettings.linkedin_url}}" class="linkedin"
+        ><i class="bx bxl-linkedin"></i
+      ></a>
+      {% comment %} <a href="{{settings.base.GenericSettings.tiktok_url}}" class="tiktok"
+        ><i class="bx bxl-tiktok"></i
+      ></a>
+      <a href="{{settings.base.GenericSettings.telegram_url}}" class="telegram"
+        ><i class="bx bxl-telegram"></i
+      ></a>
+      <a href="{{settings.base.GenericSettings.whatsapp_url}}" class="whatsapp"
+        ><i class="bx bxl-whatsapp"></i
+      ></a> {% endcomment %}
+    </div>
+  </div>
+</footer>
+<!-- End Footer -->
+{% endwith %}

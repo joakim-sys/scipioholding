@@ -1,0 +1,60 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<!-- For large screens -->
+<div class="hidden lg:block">
+    {% image page.hero_image fill-1920x705 as hero_image %}
+  <div
+    class="min-w-screen min-h-screen flex flex-col justify-center items-center relative"
+    style="
+      background-image: url('{% static 'assets/img/hero-bg.png' %}');
+      background-size: cover;
+      background-position: center;
+    "
+  >
+    <div class="h-[361px] relative flex flex-col justify-center items-center">
+      <div
+        class="max-w-[1214px] w-full h-[261px] flex justify-center items-center mx-4"
+      >
+        <div
+          class="w-[583px] text-center text-white text-[64px] font-normal leading-[82px]"
+        >
+          {% if page.hero_heading_one %}
+          {{page.hero_heading_one}}
+          {% else %}
+          Safeguarding the legacy of family businesses
+          {% endif %}
+        </div>
+        <div class="w-[2px] h-[100%] bg-white mx-8"></div>
+        <div
+          class="w-[583px] text-center text-white text-[64px] font-normal leading-[82px]"
+        >
+        {% if page.hero_heading_two %}
+        {{page.hero_heading_two}}
+        {% else %}
+          Nurturing the<br />business leaders<br />of tomorrow
+        {% endif %}
+
+        </div>
+      </div>
+      <div class="mt-4 flex flex-col justify-start items-start">
+        <button action="{% if page.hero_cta_link %}{% pageurl page.hero_cta_link %}{% else %}#{% endif %}"
+          class="w-[272px] h-[50px] flex flex-col justify-center items-center bg-cyan-700 text-white text-[15px] font-medium uppercase focus:outline-none focus:ring-2 focus:ring-cyan-700 hover:bg-cyan-800 hover:ring-2 hover:ring-cyan-800"
+        >
+          {% if page.hero_cta_text %}
+          {{page.hero_cta_text}}
+          {% else %}
+          CALL TO ACTION
+          {% endif %}
+  
+        </button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Carousel for small and medium screens (sm and md) -->
+<div class="lg:hidden">
+  {% include "includes/sections/hero.html" %}
+
+</div>

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+
+{% block content %}
+<section id="services" class="services">
+    <div class="container">
+      <div class="section-title">
+
+        <h3>{{page.title}}</h3>
+  
+
+    </div>
+  
+      <div class="row">
+        {% for aq in page.acquisitions %}
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+          <div class="icon-box">
+            {% image aq.acquistion.image original as img %}
+            <img src="{{img.url}}" class="mx-auto w-50 mb-2" alt="">
+            {% comment %} <div class="icon"><i class="bx {{service.icon}}"></i></div> {% endcomment %}
+  
+            <h4 class="title"><a href="{% pageurl aq %}">{{aq.acquistion.name}}</a></h4>
+  
+            <p class="description">{{aq.acquistion.descr|richtext}}</p>
+          </div>
+        </div>      
+        {% endfor %}
+  
+      </div>
+    </div>
+  </section>
+  
+
+{% endblock content %}
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock footer %}

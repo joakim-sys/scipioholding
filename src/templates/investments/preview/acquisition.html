@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+
+{% block content %}
+{% image object.image original as aq_logo %}
+{% image object.investor.image original as investor_image %}
+
+<!-- Layout for large devices -->
+<div class="hidden md:block container mx-auto px-4 py-4">
+    <!-- First Row -->
+    <div class="flex flex-wrap">
+      <!-- First Column -->
+      <div class="w-1/2">
+        <img src="{{aq_logo.url}}" alt="Image" class="w-3/4 h-auto">
+      </div>
+      <!-- Second Column -->
+      <div class="w-1/2 flex flex-col">
+        <div class="flex items-center mb-4">
+    <h2><span class="fi fi-{{object.country.code|lower}} fis"></span></h2>
+
+          <p class="text-lg font-medium" style="color: #A88752;">Acquistion Date {{object.date}}</p>
+        </div>
+        <p class="text-base">{{object.descr|richtext}}</p>
+        <div class="flex space-x-4 mt-4">
+            {% for tag in object.tags.all %}
+          <a href="#" class="bg-blue-100 text-blue-400 border border-blue-400 rounded-md px-4 py-2">{{tag}}</a>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  
+    <!-- Second Row -->
+    <div class="p-4 mt-4" style="background-color: #EDF6F8;">
+      <div class="flex items-center">
+        <div class="mr-4">
+            <img src="{{investor_image.url}} "  class="w-60 h-60" alt="">
+        </div> <!-- Avatar -->
+        <div>
+          <h2 class="text-xl font-semibold">{{object.investor}}</h2>
+          <p class="text-base">{{object.investor.biography|richtext}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Layout for medium and small -->
+  
+
+
+{% endblock content %}

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+
+{% block content %}
+{% image page.acquistion.image original as aq_logo %}
+{% image page.acquistion.investor.image original as investor_image %}
+
+<div class="hidden md:block container mx-auto px-4 py-4">
+    <!-- First Row -->
+    <div class="flex flex-wrap">
+      <!-- First Column -->
+      <div class="w-1/2">
+        <img src="{{aq_logo.url}}" alt="Image" class="w-3/4 h-auto">
+      </div>
+      <!-- Second Column -->
+      <div class="w-1/2 flex flex-col">
+        <div class="flex items-center mb-4">
+    <h2><span class="fi fi-{{page.acquistion.country.code|lower}} fis"></span></h2>
+
+          <p class="text-lg font-medium" style="color: #A88752;">Acquistion Date {{page.acquistion.date}}</p>
+        </div>
+        <p class="text-base">{{page.acquistion.descr|richtext}}</p>
+        <div class="flex space-x-4 mt-4">
+            {% for tag in page.tags.all %}
+          <a href="{% pageurl page.get_parent %}?tag={{ tag }}" class="bg-blue-100 text-blue-400 border border-blue-400 rounded-md px-4 py-2">{{tag}}</a>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  
+    <!-- Second Row -->
+    <div class="p-4 mt-4" style="background-color: #EDF6F8;">
+      <div class="flex items-center mx-auto">
+        <div class="flex flex-col mr-4 w-1/2 mx-auto">
+            <img src="{{investor_image.url}} "  class="w-50 h-auto mx-auto" alt="">
+        </div> <!-- Avatar -->
+        <div class="w-1/2 flex flex-col mx-auto">
+          <h2 class="text-xl font-semibold">{{page.acquistion.investor}}</h2>
+          <p class="text-base">{{page.acquistion.investor.biography|richtext}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<section class=" md:hidden mt-2"> 
+<div class="container py-10">
+<div class="flex items-center justify-center mb-2">
+  <img src="{{aq_logo.url}}" alt="Image" class="w-40 h-auto"><br>
+</div>
+  <!-- <span class="fi fi-{{page.acquistion.country.code|lower}} fis"></span> -->
+  <p class="text-lg font-medium" style="color: #A88752;">Acquistion Date <br>{{page.acquistion.date}}</p>
+
+  <p class="text-base">{{page.acquistion.descr|richtext}}</p>
+
+  <div class="flex space-x-4 mt-4">
+    {% for tag in page.tags.all %}
+  <a href="{% pageurl page.get_parent %}?tag={{ tag }}" class="bg-blue-100 text-blue-400 border border-blue-400 rounded-md px-4 py-2">{{tag}}</a>
+    {% endfor %}
+</div>
+
+    <!-- Second Row -->
+    <div class="p-4 mt-4" style="background-color: #EDF6F8;">
+      <div class="items-center">
+        <div class="flex gap-2 mr-4 mb-2">
+            <img src="{{investor_image.url}} "  class="w-40 h-40" alt="">
+            <div>
+            <h2 class="text-xl font-semibold">{{page.acquistion.investor}}</h2>
+            <h2 class="text-xl font-md">{{page.acquistion.investor.job_title}}</h2>
+            </div>
+
+        </div> <!-- Avatar -->
+        <div>
+          <p class="text-base">{{page.acquistion.investor.biography|richtext}}</p>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+</section>
+
+{% endblock content %}
+
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock footer %}
+

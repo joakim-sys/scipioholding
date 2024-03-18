@@ -1,0 +1,128 @@
+{% load wagtailcore_tags %}
+
+{% with title=page.pricing_title heading=page.pricing_heading subheading=page.pricing_subheading tiers=page.pricing_tiers.all %}
+<!-- ======= Pricing Section ======= -->
+<section id="pricing" class="pricing">
+  <div class="container">
+    <div class="section-title">
+      <h2>
+        {% if title %}
+        {{title}}
+        {% else %}
+        Packages
+        {% endif %}
+      </h2>
+      <h3>
+        {% if heading %}
+        {{heading}}
+        {% else %}
+        Choose Your Plan
+        {% endif %}
+      </h3>
+      <p>
+        {% if subheading %}
+        {{subheading}}
+        {% else %}
+        From essential features to comprehensive solutions, find the perfect fit for your business needs. Select the plan that aligns with your goals and unlock the power of customization and control.
+        {% endif %}
+      </p>
+    </div>
+
+    <div class="row">
+      {% if tiers %}
+      {% for tier in page.pricing_tiers.all %}
+      <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+        <div class="box {% if tier.is_special %}recommended{% endif %}">
+          {% if tier.is_special %}
+          <span class="recommended-badge">{{tier.special_name}}</span>
+          {% endif %}
+          <h3>{{tier.name}}</h3>
+          <h4><sup>$</sup>{{tier.price}}<span></span></h4>
+          <ul>
+            {% for feature in tier.pricing_features.all %}
+            <li>{{feature.name}}</li>
+            {% endfor %}
+            {% for feature in tier.get_excluded_features  %}
+            <li class="na">{{feature.name}}</li>
+            {% endfor %}
+          </ul>
+          <div class="btn-wrap">
+            {% if tier.cta_link %}
+            <a href="{% pageurl tier.cta_link %}" class="btn-buy"
+              >{{tier.cta_text}}</a
+            >
+            {% else %}
+            <a href="#" class="btn-buy">{{tier.cta_text}}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      {% else %}      
+      <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+        <div class="box">
+          <h3>Essential</h3>
+          <h4><sup>$</sup>25<span></span></h4>
+          <ul>
+            <li>Hero Section Customization</li>
+            <li>About Section Customization</li>
+            <li>Contact Form Creation</li>
+            <li class="na">Pricing Model Customization</li>
+            <li class="na">Blogging Feature</li>
+            <li class="na">Snippet Management</li>
+          </ul>
+          <div class="btn-wrap">
+            <a href="#" class="btn-buy"
+              >Get Started</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+        <div class="box recommended">
+          <span class="recommended-badge">Top sale</span>
+          <h3>Professional</h3>
+          <h4><sup>$</sup>45<span></span></h4>
+          <ul>
+            <li>Hero Section Customization</li>
+            <li>About Section Customization</li>
+            <li>Contact Form Creation</li>
+            <li class="">Pricing Model Customization</li>
+            <li class="">Blogging Feature</li>
+            <li class="na">Snippet Management</li>
+          </ul>
+          <div class="btn-wrap">
+            <a href="#" class="btn-buy"
+              >Get Started</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+        <div class="box ">
+          <h3>Ultimate</h3>
+          <h4><sup>$</sup>75<span></span></h4>
+          <ul>
+            <li>Hero Section Customization</li>
+            <li>About Section Customization</li>
+            <li>Contact Form Creation</li>
+            <li class="">Pricing Model Customization</li>
+            <li class="">Blogging Feature</li>
+            <li class="">Snippet Management</li>
+          </ul>
+          <div class="btn-wrap">
+            <a href="#" class="btn-buy"
+              >Get Started</a
+            >
+          </div>
+        </div>
+      </div>
+
+      {% endif %}
+    </div>
+  </div>
+</section>
+<!-- End Pricing Section -->
+{% endwith %}

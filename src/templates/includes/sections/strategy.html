@@ -1,0 +1,201 @@
+    <!-- Large device layout -->
+    <section class="hidden lg:block p-10">
+        <div class="flex gap-10">
+          <div
+            class="w-[347px] h-[423px] flex-col justify-start items-start gap-[26px] inline-flex bg-white rounded-lg p-5"
+          >
+            <h1
+              class="text-center text-zinc-700 text-[55px] font-normal font-['Baskerville'] leading-[65px]"
+            >
+            {{strategy_page_content.title}}
+            </h1>
+            <hr class="w-[347px] h-[0px] border border-zinc-700" />
+            <div class="flex-col justify-start items-start gap-[35px] flex">
+              <p
+                class="w-[337px] text-zinc-700 text-[17px] font-normal font-['Gotham'] leading-relaxed"
+              >
+              {% if strategy_page_content.introduction %}
+              {{strategy_page_content.introduction}}
+              {% else %}
+              Take advantage of succession issues, Scipio invests in Search Funds
+              and acquired growing, profitable and consolidated SMEs directly.
+              {% endif %}             
+            </p>
+              <div class="w-[334px] h-[167px] relative">
+
+                <button
+                  data-target="succession-issues"
+                  onclick="showTabContent(1, this)"
+                  class="tab-button w-full bg-slate-100 w-[334px] p-2.5 left-[8px] top-[1px] absolute gap-2.5 inline-flex focus:bg-slate-400 hover:bg-slate-400"
+                >
+                  <h3
+                    class="text-center text-zinc-700 text-[15px] font-medium font-['Gotham'] uppercase"
+                  >
+                  {{strategy_page_content.tab_one_title}}
+                </h3>
+                </button>
+  
+                <button
+                  data-target="serial-acquisition"
+                  onclick="showTabContent(2, this)"
+                  class="tab-button w-full mt-2 p-2.5 left-[8px] top-[43px] absolute gap-2.5 inline-flex focus:bg-slate-400 hover:bg-slate-400"
+                >
+                  <h3
+                    class="text-zinc-700 text-[15px] font-normal font-['Gotham'] uppercase"
+                  >
+                  {{strategy_page_content.tab_two_title}}
+                </h3>
+                </button>
+  
+                <button
+                  data-target="search-funds"
+                  onclick="showTabContent(3, this)"
+                  class="tab-button w-full mt-2 h-10 p-2.5 left-[8px] top-[85px] absolute gap-2.5 inline-flex focus:bg-slate-400 hover:bg-slate-400"
+                >
+                  <h3
+                    class="text-zinc-700 text-[15px] font-normal font-['Gotham'] uppercase"
+                  >
+                  {{strategy_page_content.tab_three_title}}
+                </h3>
+                </button>
+  
+                <button
+                  data-target="scipio-swanlaab"
+                  onclick="showTabContent(4, this)"
+                  class="tab-button w-full mt-2 p-2.5 left-[8px] top-[127px] absolute gap-2.5 inline-flex focus:bg-slate-400 hover:bg-slate-400"
+                >
+                  <h3
+                    class="text-zinc-700 text-[15px] font-normal font-['Gotham'] uppercase"
+                  >
+                  {{strategy_page_content.tab_four_title}}
+                </h3>
+                </button>
+              </div>
+            </div>
+          </div>
+  
+          <!-- TAB Content -->
+          <div class="flex-1 rounded-lg p-5">
+            <div id="tabContent1" class="tab-content">
+              <div class="flex flex-col justify-center items-center gap-8 px-4">
+
+                {% if strategy_page_content.tab_one_content %}
+                {{strategy_page_content.tab_one_content}}
+                {% else %}
+                <!-- Dummy content for demonstration  -->
+                <!-- Large Heading with Prefix Icon -->
+                <h1
+                  class="text-zinc-700 text-3xl font-normal font-Gotham leading-relaxed"
+                >
+                  <span class="inline-block mr-2">
+                    <!-- Prefix Icon -->
+                    <svg
+                      class="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <!-- Your icon SVG code here -->
+                    </svg>
+                  </span>
+                  SME Succession Issues
+                </h1>
+  
+                <!-- Paragraph Description -->
+                <p class="text-stone-500 text-lg font-Gotham leading-7">
+                  Increasingly, successful family-owned businesses are facing
+                  succession issues. The founders are looking to retire and
+                  move-on but
+                </p>
+  
+                <!-- Smaller Heading -->
+                <h2
+                  class="text-stone-500 text-2xl font-medium font-Gotham leading-7"
+                >
+                  Share of SMEs facing Succession Issues
+                </h2>
+                <!-- Paragraph Description -->
+                <p class="text-slate-500 text font-Gotham ">
+                  {% lorem 3 p random %}
+                </p>
+                
+                <!-- Graph or Table -->
+                <div class="relative">
+                  <!-- Graph Container -->
+                  <div
+                    class="absolute top-0 left-0 w-full h-full border border-zinc-700"
+                  >
+                    <!-- Vertical Lines -->
+                    <div
+                      class="absolute top-0 left-0 w-full h-0.5 border-b border-zinc-700"
+                    ></div>
+                    <div
+                      class="absolute top-1/7 left-0 w-full h-0.5 border-b border-zinc-700"
+                    ></div>
+                    <!-- Repeat for other vertical lines -->
+  
+                    <!-- Horizontal Lines -->
+                    <!-- Use absolute positioning and percentage values for responsiveness -->
+                    <!-- Repeat for horizontal lines -->
+  
+                    <!-- Labels -->
+                    <div
+                      class="absolute top-0 right-0 text-zinc-700 text-base font-medium font-Gotham leading-snug"
+                    >
+                      
+                    </div>
+                    <!-- Repeat for other labels -->
+  
+                    <!-- Year Labels -->
+                    <!-- Use absolute positioning and percentage values for responsiveness -->
+                    <!-- Repeat for year labels -->
+  
+                    <!-- Data Points -->
+                    <!-- Use absolute positioning and percentage values for responsiveness -->
+                    <!-- Repeat for data points -->
+                  </div>
+                </div>
+                {% endif %}
+
+
+              </div>
+            </div>
+            <div id="tabContent2" class="tab-content">
+            {{strategy_page_content.tab_two_content}}
+
+            </div>
+            <div id="tabContent3" class="tab-content">
+            {{strategy_page_content.tab_three_content}}
+
+            </div>
+            <div id="tabContent4" class="tab-content">
+            {{strategy_page_content.tab_four_content}}
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+{% include "includes/sections/layout/small/strategy.html" %}
+    <script>
+      function showTabContent(tab, button) {
+        // Hide all tab contents
+        document.querySelectorAll('[id^="tabContent"]').forEach((element) => {
+          element.classList.add("hidden");
+        });
+
+        // Show the selected tab content
+        document.getElementById("tabContent" + tab).classList.remove("hidden");
+
+        // Remove 'highlighted' class from all buttons
+        // document.querySelectorAll(".tab-button").forEach((btn) => {
+        //   btn.style.backgroundColor = ""; // Reset background color for all buttons
+        // });
+
+        // Add background color to the clicked button
+        // button.style.backgroundColor = "var(--color-slate-100)";
+      }
+    </script>
+

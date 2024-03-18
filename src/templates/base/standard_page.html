@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+<!--  -->
+{% load wagtailcore_tags %}
+<!--  -->
+{% block body_class %}template-standardpage{% endblock %} {% block content %}
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      {% comment %} <h2>{{page.title}}</h2> {% endcomment %}
+      <h3>
+        <span> {% comment %} {% endcomment %} </span>
+      </h3>
+      <p>{{page.title}}</p>
+    </div>
+
+    <div class="row content">
+      <div class="col-lg-10">
+        {{page.body}}
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0"></div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
+
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock footer %}

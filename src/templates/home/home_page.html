@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Scopio Holdi{% endblock title %}
+{% block body_class %}template-homepage{% endblock %}
+
+{% block hero %}{% include "includes/sections/hero2.html" %}{% endblock hero %}
+
+
+{% block content %}
+
+{% include "includes/sections/about.html" %}
+{% include "includes/sections/strategy.html" %}
+{% include "includes/sections/investments.html" %}
+{% endblock content %}
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock footer %}

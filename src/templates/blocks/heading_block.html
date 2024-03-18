@@ -1,0 +1,10 @@
+{% if self.size == 'h2' %}
+    <h2 class="text-4xl font-normal font-serif">{{ self.heading_text }}</h2>
+
+{% elif self.size == 'h3' %}
+    <h3 class="text-3xl font-normal font-serif">{{ self.heading_text }}</h3>
+
+{% elif self.size == 'h4' %}
+    <h4 class="text-2xl font-normal font-serif">{{ self.heading_text }}</h4>
+
+{% endif %}

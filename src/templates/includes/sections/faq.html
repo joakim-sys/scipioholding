@@ -1,0 +1,127 @@
+{% with title=page.faq_title heading=page.faq_heading subheading=page.faq_subheading faqs=page.faqs.all %}
+<!-- ======= F.A.Q Section ======= -->
+<section id="faq" class="faq">
+  <div class="container">
+    <div class="section-title">
+      <h2>
+        {% if title %}{{title}}{% else %}FAQ{% endif %}
+      </h2>
+      <h3>{% if heading %}{{heading}}{% else %}Frequently Asked Questions{% endif %}</h3>
+    </div>
+
+    <ul class="faq-list">
+      {% if faqs %}
+      {% for faq in faqs.all %}
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq{{faq.id}}">
+          {{faq.question}}
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq{{faq.id}}" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            {{faq.answer}}
+          </p>
+        </div>
+      </li>
+      {% endfor %}
+      {% else %}
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">
+          How do I customize the hero section of my website?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            To customize the hero section, log in to the Wagtail admin interface, navigate to the Hero Section settings, and modify the content as needed.
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq2">
+          Can I add my own icons for visual appeal?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            Yes, the template allows for icon customization. Simply access the Icon Customization section in the Wagtail admin interface and upload your preferred icons.
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq3">
+          What is the process for creating a custom contact form?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq3" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            Use the Wagtail admin interface to access the Form Features settings. Follow the provided documentation to easily create and integrate custom contact forms.
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq4">
+          How can I enable multi-language support on my website?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            Achieve multi-language support by adjusting settings in the Wagtail admin interface. Refer to the documentation for step-by-step instructions.
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq5">
+          Can I manage pricing models and features easily?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq5" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            Absolutely! Snippets manage pricing models and features, allowing you to update and customize them effortlessly through the Wagtail admin interface.
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq6">
+          Is the template compatible with different devices and screen sizes?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq6" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            Yes, the template is fully responsive and looks great on all devices and screen sizes, ensuring a consistent user experience.
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <div data-bs-toggle="collapse" class="collapsed question" href="#faq7">
+          How do I ensure SEO optimization for my website?
+          <i class="bi bi-chevron-down icon-show"></i
+          ><i class="bi bi-chevron-up icon-close"></i>
+        </div>
+        <div id="faq7" class="collapse" data-bs-parent=".faq-list">
+          <p>
+            Optimize your website for search engines by accessing the SEO Optimization settings in the Wagtail admin interface. Follow the provided guidelines for best practices.
+          </p>
+        </div>
+      </li>
+
+
+
+      {% endif %}
+    </ul>
+  </div>
+</section>
+<!-- End F.A.Q Section -->
+{% endwith %}

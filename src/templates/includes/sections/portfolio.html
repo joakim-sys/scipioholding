@@ -1,0 +1,212 @@
+{% load wagtailimages_tags static wagtailcore_tags %}
+
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio">
+  <div class="container">
+    <div class="section-title">
+      <h2>About Us</h2>
+      <h3>About<span> Scipio Holding</span></h3>
+<!-- 
+      <p>
+        Ut possimus qui ut temporibus culpa velit eveniet modi omnis est
+        adipisci expedita at voluptas atque vitae autem.
+      </p>
+ -->
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 d-flex justify-content-center">
+        <ul id="portfolio-flters">
+          <li data-filter=".filter-one" class="filter-active">{% if page.tab_one_title %}{{page.tab_one_title}}{% else %}OUR STORY{% endif %}</li>
+          <li data-filter=".filter-two">{% if page.tab_two_title %}{{page.tab_two_title}}{% else %}OUR TEAM{% endif %}</li>
+          <li data-filter=".filter-three">{% if page.tab_three_title %}{{page.tab_three_title}}{% else %}OUR ADVISORS{% endif %}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row portfolio-container">
+      <div class="col-lg-12 col-md-6 portfolio-item filter-one">
+        <div class="row">
+          <div class="col-md-6">
+             {{page.body}}
+          </div>
+
+          <div class="col-md-6">
+            {% if page.image %}
+            {% image page.image fill-1200x800 as img %}
+            {% endif %}
+            <img
+            src="{{img.url}}"
+            class="img-fluid"
+            alt=""
+          />
+           </div>
+
+          <div>
+            
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-12 col-md-6 portfolio-item filter-two">
+        <div class="team">
+        <div class="row">
+          {% for member in page.team_members %}
+          <div class="col-lg-3 col-md-6 member">
+            <div class="member">
+              <div class="member-img">
+                {% if member.image %}{% image member.image fill-200x200 as member_img %}{% endif %}
+                <img src="{{member_img.url}}" class="img-fluid img-circle" alt="" />
+                <div class="social">
+                  {% comment %} <a href="{{member.x_url}}"><i class="bi bi-twitter"></i></a> {% endcomment %}
+                  <a href="{{member.linkedin_url}}"><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>{{member}}</h4>
+                <span>{{member.job_title}}</span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+            </div>
+          </div>
+      </div>
+
+      <div class="col-lg-12 col-md-6 portfolio-item filter-three">
+        <div class="team">
+        <div class="row">
+          {% for member in page.advisors %}
+          <div class="col-lg-3 col-md-6 member">
+            <div class="member">
+              <div class="member-img">
+                {% if member.image %}{% image member.image fill-200x200 as member_img %}{% endif %}
+                <img src="{{member_img.url}}" class="img-fluid img-circle" alt="" />
+                <div class="social">
+                  <a href="{{member.x_url}}"><i class="bi bi-twitter"></i></a>
+                  <a href="{{member.linkedin_url}}"><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>{{member}}</h4>
+                <span>{{member.role}}</span>
+                <span>{{member.country}}</i></span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+            </div>
+          </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+<!-- End Portfolio Section -->
+
+
+<!-- ======= About Section ======= -->
+  <section id="aboutx" class="about">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-header">
+        <h2>About Us</h2>
+        <p>Architecto nobis eos vel nam quidem vitae temporibus voluptates qui hic deserunt iusto omnis nam voluptas asperiores sequi tenetur dolores incidunt enim voluptatem magnam cumque fuga.</p>
+      </div>
+
+        <div class="col-lg-12">
+          <h3 class="pt-0 pt-lg-5">Neque officiis dolore maiores et exercitationem quae est seda lidera pat claero</h3>
+
+          <!-- Tabs -->
+          <ul class="nav nav-pills mb-3">
+            <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1">Saepe fuga</a></li>
+            <li><a class="nav-link" data-bs-toggle="pill" href="#tab2">Voluptates</a></li>
+            <li><a class="nav-link" data-bs-toggle="pill" href="#tab3">Corrupti</a></li>
+          </ul><!-- End Tabs -->
+
+          <!-- Tab Content -->
+          <div class="tab-content">
+
+            <div class="tab-pane fade show active" id="tab1">
+
+              <p class="fst-italic">Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+              </div>
+              <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>Incidunt non veritatis illum ea ut nisi</h4>
+              </div>
+              <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
+              </div>
+              <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
+
+            </div><!-- End Tab 1 Content -->
+
+            <div class="tab-pane fade show" id="tab2">
+
+              <p class="fst-italic">Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+              </div>
+              <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>Incidunt non veritatis illum ea ut nisi</h4>
+              </div>
+              <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
+              </div>
+              <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
+
+            </div><!-- End Tab 2 Content -->
+
+            <div class="tab-pane fade show" id="tab3">
+
+              <p class="fst-italic">Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+              </div>
+              <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>Incidunt non veritatis illum ea ut nisi</h4>
+              </div>
+              <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
+              </div>
+              <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
+
+            </div><!-- End Tab 3 Content -->
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End About Section -->
+

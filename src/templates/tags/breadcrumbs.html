@@ -1,0 +1,28 @@
+{% load wagtailcore_tags %}
+ 
+{% if ancestors %}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+    <ol>
+      {% for ancestor in ancestors %}
+    
+        {% if forloop.last %}
+            <li>{{ancestor}}</li>
+        {% else %}
+            <li>
+                <a href="{% pageurl ancestor %}">
+                {% if forloop.last %}Home {% else %}{{ancestor}}{% endif %}
+                </a>
+            </li>
+        {% endif %}
+
+      {% endfor %}
+    </ol>
+    <h2>{{page.title}}</h2>
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+
+{% endif %}

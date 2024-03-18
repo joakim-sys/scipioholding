@@ -1,0 +1,302 @@
+{% extends "base.html" %} 
+
+{% block extra_css %}
+<style>
+    .strategy-tab:hover .tab-text {
+      color: #4fd1c5; /* Change color on hover */
+    }
+  
+    .strategy-tab.active .tab-text {
+      color: #4fd1c5; /* Active tab color */
+    }
+  
+    .strategy-tab:not(.active) .tab-text {
+      color: #999; /* Inactive tab color */
+    }
+  </style>
+  
+{% endblock extra_css %}
+
+
+{% block content %}
+<!-- Large device layout -->
+<section class="hidden lg:block p-10">
+  <div class="flex gap-10">
+    <div
+      class="w-[347px] h-[423px] flex-col justify-start items-start gap-[26px] inline-flex bg-white rounded-lg p-5"
+    >
+      <h1
+        class="text-center text-zinc-700 text-[55px] font-normal font-['Baskerville'] leading-[65px]"
+      >
+        {{page.title}}
+      </h1>
+      <hr class="w-[347px] h-[0px] border border-zinc-700" />
+      <div class="flex-col justify-start items-start gap-[35px] flex">
+        <p
+          class="w-[337px] text-zinc-700 text-[17px] font-normal font-['Gotham'] leading-relaxed"
+        >
+        {% if page.introduction %}
+        {{page.introduction}}
+        {% else %}
+        Take advantage of succession issues, Scipio invests in Search Funds
+        and acquired growing, profitable and consolidated SMEs directly.
+        {% endif %}
+
+        </p>
+        <div class="w-[334px] h-[167px] relative">
+
+            {% if page.tab_one_title %}
+          <button 
+            class="strategy-tab w-full bg-slate-100 w-[334px] p-2.5 left-[8px] top-[1px] absolute gap-2.5 inline-flex focus:bg-slate-200 hover:bg-slate-200 hover:text-bg-slate-900"
+            data-tab="strategy-tab-one"
+            >
+            <h3
+              class="text-center text-zinc-700 text-[15px] font-medium font-['Gotham'] uppercase"
+            >
+            {{page.tab_one_title}}
+            
+            </h3>
+          </button>
+          {% endif %}
+
+          {% if page.tab_two_title %}
+          <button
+            class="strategy-tab w-full mt-2 p-2.5 left-[8px] top-[43px] absolute gap-2.5 inline-flex focus:bg-slate-200 hover:bg-slate-200 hover:text-bg-slate-900"
+            data-tab="strategy-tab-two"
+            >
+            <h3
+              class="text-zinc-700 text-[15px] font-normal font-['Gotham'] uppercase"
+            >
+              {{page.tab_two_title}}
+            </h3>
+          </button>
+          {% endif %}
+
+        {% if page.tab_three_title %}
+          <button id="strategy-tab" data-tab="strategy-tab-three"
+            class="tab-button w-full mt-2 h-10 p-2.5 left-[8px] top-[85px] absolute gap-2.5 inline-flex focus:bg-slate-200 hover:bg-slate-200 hover:text-bg-slate-900"
+          >
+            <h3
+              class="text-zinc-700 text-[15px] font-normal font-['Gotham'] uppercase"
+            >
+              {{page.tab_three_title}}
+            </h3>
+          </button>
+          {% endif %}
+
+          {% if page.tab_four_title %}
+          <button id="strategy-tab" data-tab="strategy-tab-four"
+            onclick="showTabContent(4, this)"
+            class="tab-button w-full mt-2 p-2.5 left-[8px] top-[127px] absolute gap-2.5 inline-flex focus:bg-slate-200 hover:bg-slate-200 hover:text-bg-slate-900"
+          >
+            <h3
+              class="text-zinc-700 text-[15px] font-normal font-['Gotham'] uppercase"
+            >
+              {{page.tab_four_title}}
+            </h3>
+          </button>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB Content -->
+    <div class="flex-1 rounded-lg p-5">
+      <div 
+      class="strategy-tab-content fade show active pb-4"
+      >
+      <div class="flex flex-col gap-8 px-4">
+            {{page.tab_one_content}}
+        </div>
+      </div>
+      <!-- Add Tab -->
+      <div id="strategy-tab-two-content" class="strategy-tab-content">
+        <div class="flex flex-col justify-center items-center gap-8 px-4">
+            {{page.tab_two_content}}
+        </div>
+      </div>
+      <!-- Add Tab -->
+      <div id="strategy-tab-two-content" class="strategy-tab-content">
+        <div class="flex flex-col justify-center items-center gap-8 px-4">
+            {{page.tab_three_content}}
+        </div>
+      </div>
+      <!-- Add Tab -->
+      <div id="strategy-tab-two-content" class="strategy-tab-content">
+        <div class="flex flex-col justify-center items-center gap-8 px-4">
+            {{page.tab_four_content}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Small devices -->
+<section class="md:hidden">
+  <div class="container">
+    <h1
+    class="text-center text-zinc-700 text-[55px] font-normal font-['Baskerville'] leading-[65px]"
+  >
+    {{page.title}}
+  </h1>
+  <p
+  class="w-full text-zinc-700 text-[17px] font-normal font-['Gotham'] leading-relaxed">
+{% if page.introduction %}
+{{page.introduction}}
+{% else %}
+Take advantage of succession issues, Scipio invests in Search Funds
+and acquired growing, profitable and consolidated SMEs directly.
+{% endif %}
+
+</p>
+
+
+    <div
+      class="nav-scroller py-1 mb-6 mt-6 border-bottom"
+      style="
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      "
+    >
+      <nav
+        class="nav nav-underline justify-content-between"
+        role="tablist"
+        style="
+          display: flex;
+          flex-wrap: nowrap;
+          padding-bottom: 1rem;
+          margin-top: -1px;
+          overflow-x: auto;
+          text-align: center;
+          white-space: nowrap;
+          -webkit-overflow-scrolling: touch;
+        "
+      >
+      {% if page.tab_one_title %}
+        <li class="nav-item nav-link link-body-emphasis" role="presentation">
+          <button
+            class="text-md font-normal font-['Baskerville']"
+            id="strategy-tab-one"
+            data-bs-toggle="tab"
+            data-bs-target="#strategy-tab-one-content"
+            type="button"
+            role="tab"
+            aria-controls="strategy-tab-one"
+            aria-selected="true"
+          >
+            {{page.tab_one_title}}
+          </button>
+        </li>
+        {% endif %}
+
+        {% if page.tab_two_title %}
+        <li class="nav-item nav-link link-body-emphasis" role="presentation">
+          <button
+            class="text-md font-normal font-['Baskerville']"
+            id="strategy-tab-two"
+            data-bs-toggle="tab"
+            data-bs-target="#strategy-tab-two-content"
+            type="button"
+            role="tab"
+            aria-controls="strategy-tab-one"
+            aria-selected="false"
+          >
+            {{page.tab_two_title}}
+          </button>
+        </li>
+        {% endif %}
+
+        {% if page.tab_three_title %}
+        <li class="nav-item nav-link link-body-emphasis" role="presentation">
+          <button
+            class="text-md font-normal font-['Baskerville']"
+            id="strategy-tab-three"
+            data-bs-toggle="tab"
+            data-bs-target="#strategy-tab-three-content"
+            type="button"
+            role="tab"
+            aria-controls="strategy-tab-three"
+            aria-selected="false"
+          >
+            {{page.tab_three_title}}
+          </button>
+        </li>
+        {% endif %}
+
+        {% if page.tab_four_title %}
+        <li class="nav-item nav-link link-body-emphasis" role="presentation">
+          <button
+            class="text-md font-normal font-['Baskerville']"
+            id="strategy-tab-four"
+            data-bs-toggle="tab"
+            data-bs-target="#strategy-tab-four-content"
+            type="button"
+            role="tab"
+            aria-controls="strategy-tab-four"
+            aria-selected="false"
+          >
+            {{page.tab_four_title}}
+          </button>
+        </li>
+        {% endif %}
+
+    </nav>
+    </div>
+
+    <div class="tab-content" id="myTabContent">
+      <!-- Start Tab -->
+      <div
+        class="tab-pane fade show active"
+        id="strategy-tab-one-content"
+        role="tabpanel"
+        aria-labelledby="strategy-tab-one"
+      >
+        {{page.tab_one_content}}
+    </div>
+      <!-- Tab end -->
+
+      <!-- Start Tab -->
+      <div
+        class="tab-pane fade show active"
+        id="strategy-tab-two-content"
+        role="tabpanel"
+        aria-labelledby="strategy-tab-two"
+      >
+    {{page.tab_two_content}}
+    </div>
+      <!-- Tab end -->
+      <!-- Start Tab -->
+      <div
+        class="tab-pane fade show active"
+        id="strategy-tab-three-content"
+        role="tabpanel"
+        aria-labelledby="strategy-tab-three"
+      >
+    {{page.tab_three_content}}
+    </div>
+      <!-- Tab end -->
+      <!-- Start Tab -->
+      <div
+        class="tab-pane fade show active"
+        id="strategy-tab-four-content"
+        role="tabpanel"
+        aria-labelledby="strategy-tab-four"
+      >
+    {{page.tab_four_content}}
+    </div>
+      <!-- Tab end -->
+
+      
+
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock footer %}

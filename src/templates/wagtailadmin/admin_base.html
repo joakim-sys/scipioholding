@@ -1,0 +1,24 @@
+{% extends "wagtailadmin/admin_base.html" %}
+
+{% load static wagtailimages_tags %}
+
+{% block branding_favicon %}
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.png' %}" />
+
+{% endblock %}
+
+{% comment %} 
+{% block branding_title %}
+    {% with title=settings.base.SiteSettings.branding_title %}
+    {% if title %}
+    {{title}}
+    {% else %}
+    Add Title
+    {% endif %}
+    {% endwith %}
+{% endblock %}
+ {% endcomment %}
+
+{% block branding_title %}
+Scopio Holding
+{% endblock %}

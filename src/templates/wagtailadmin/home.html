@@ -1,0 +1,21 @@
+{% extends "wagtailadmin/home.html" %}
+
+{% block branding_welcome %}
+{% comment %} 
+{% with welcome=settings.base.SiteSettings.branding_welcome logo=settings.base.SiteSettings.logo %}
+{% if welcome %}
+{{welcome}}
+{% else %}
+Welcome to {{logo}} CMS
+{% endif %}
+
+{% endwith %}
+ {% endcomment %}
+
+
+Welcome to Scipio Holding CMS
+
+
+
+
+{% endblock %}

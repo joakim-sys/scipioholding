@@ -1,0 +1,18 @@
+{% extends "wagtailadmin/login.html" %}
+
+{% block branding_login %}
+
+{% with login_text=settings.base.SiteSettings.branding_login %}
+
+{% if login_text %}
+{{login_text}}
+{% else %}
+Sign in
+{% endif %}
+
+{% endwith %}
+
+{% endblock %}
+
+
+<!-- {% block below_login %}{% endblock %} -->
