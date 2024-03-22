@@ -17,9 +17,9 @@ INTERNAL_IPS = [
 # Application definition
 
 INSTALLED_APPS = [
-    # 'django_countries',
+    'django_countries',
     'strategies',
-    'investments',
+    'investment',
     'advisors',
     'team',
     'base',

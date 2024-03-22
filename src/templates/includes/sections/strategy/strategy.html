@@ -1,0 +1,25 @@
+<section class="d-lg-none container" id="strategy">
+    {% if title %}
+    <h1 class="text-center mb-4">{{title}}</h1>    
+    {% else %}
+    <h1 class="text-center mb-4">Strategy</h1>
+    {% endif %}
+  <p>
+    {% if introduction %}
+    {{introduction}}    
+    {% else %}
+    Take advantage of succession issues, Scipio invests in Search Funds and
+    acquired growing, profitable and consolidated SMEs directly.
+    {% endif %}
+  </p>
+
+  {% include "includes/sections/strategy/small-layout.html" %}
+</section>
+
+
+
+<section class="d-none d-lg-block mt-5">
+  {% include "includes/sections/strategy/large-layout.html" %}
+</section>
+  
+

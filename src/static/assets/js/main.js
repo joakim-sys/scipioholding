@@ -1,9 +1,8 @@
 /**
-* Template Name: Tempo
-* Updated: Sep 18 2023 with Bootstrap v5.3.2
-* Template URL: https://templatevoyage.pythonanywhere.com/tempo-free-onepage-bootstrap-theme/
-* Author: templatevoyage.pythonanywhere.com
-* License: https://templatevoyage.pythonanywhere.com/license/
+* Template Name: Maxim - v4.6.0
+* Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
 */
 (function() {
   "use strict";
@@ -20,6 +19,20 @@
     }
   }
 
+  /**
+   * Hero carousel indicators
+   */
+  let heroCarouselIndicators = select("#hero-carousel-indicators")
+  let heroCarouselItems = select('#heroCarousel .carousel-item', true)
+
+  heroCarouselItems.forEach((item, index) => {
+    (index === 0) ?
+    heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>":
+      heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
+  });
+
+
+  
   /**
    * Easy event listener function
    */
@@ -68,31 +81,11 @@
     let header = select('#header')
     let offset = header.offsetHeight
 
-    if (!header.classList.contains('header-scrolled')) {
-      offset -= 16
-    }
-
     let elementPos = select(el).offsetTop
     window.scrollTo({
       top: elementPos - offset,
       behavior: 'smooth'
     })
-  }
-
-  /**
-   * Toggle .header-scrolled class to #header when page is scrolled
-   */
-  let selectHeader = select('#header')
-  if (selectHeader) {
-    const headerScrolled = () => {
-      if (window.scrollY > 100) {
-        selectHeader.classList.add('header-scrolled')
-      } else {
-        selectHeader.classList.remove('header-scrolled')
-      }
-    }
-    window.addEventListener('load', headerScrolled)
-    onscroll(document, headerScrolled)
   }
 
   /**
@@ -149,6 +142,46 @@
   }, true)
 
   /**
+   * Scroll with ofset on page load with hash links in the url
+   */
+  window.addEventListener('load', () => {
+    if (window.location.hash) {
+      if (select(window.location.hash)) {
+        scrollto(window.location.hash)
+      }
+    }
+  });
+
+  /**
+   * Testimonials slider
+   */
+  new Swiper('.testimonials-slider', {
+    speed: 600,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    slidesPerView: 'auto',
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 20
+      },
+
+      1200: {
+        slidesPerView: 3,
+        spaceBetween: 20
+      }
+    }
+  });
+
+  /**
    * Porfolio isotope and filter
    */
   window.addEventListener('load', () => {
@@ -171,7 +204,9 @@
         portfolioIsotope.arrange({
           filter: this.getAttribute('data-filter')
         });
-
+        portfolioIsotope.on('arrangeComplete', function() {
+          AOS.refresh()
+        });
       }, true);
     }
 
@@ -202,14 +237,17 @@
   });
 
   /**
-   * Scroll with ofset on page load with hash links in the url
+   * Animation on scroll
    */
   window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
-    }
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    })
   });
 
 })()
+
+

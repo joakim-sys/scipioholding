@@ -1,0 +1,42 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% image acquisition.image original as acquisition_image %}
+
+<div class="col-md-4 col-lg-3">
+  <button
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#{{acquisition.name|slugify}}-acquisition-lg"
+    style="
+      background-color: transparent;
+      border: none;
+      outline: none;
+      border-color: none;
+      box-shadow: none;
+    "
+  >
+    <div
+      class="card m-2 p-3 {% if first_item %}soft-blue-card {% else %} yellow-card {% endif %}"
+      style="height: 270px;"
+    >
+      <div class="">
+        <img src="{{acquisition_image.url}}" class="img-fluid w-50" alt="" />
+        <div class="row mt-3">
+          <div class="col-9 pt-4">
+            <b class="" style="color: #a88752">{{acquisition.investor|upper}}</b><br>
+            <p>
+            {{acquisition.country.name}}</p>
+          </div>
+          <div class="col-3 mt-3 pt-3">
+            {% if first_item %}
+            <img
+              src="{% static 'assets/img/icons/right_arrow.svg' %}"
+              style="width: 110%"
+              alt=""
+            />
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </button>
+</div>

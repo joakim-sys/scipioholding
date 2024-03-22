@@ -1,21 +1,10 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
 
-{% block breadcrumbs %}
-<!-- ======= Breadcrumbs ======= -->
-<section id="breadcrumbs" class="breadcrumbs">
-    <div class="container">
+{% block header %}
+{% include "includes/sections/header/header.html" %}
+{% endblock header %}
 
-        <ol>
-        <li><a href="/">Home</a></li>
-        <li>Contact</li>
-        <li>Success</li>
-        </ol>
-
-    </div>
-</section>
-<!-- End Breadcrumbs -->
-{% endblock breadcrumbs %}
 
 
 {% block content %}

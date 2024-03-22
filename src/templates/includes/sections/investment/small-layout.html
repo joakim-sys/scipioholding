@@ -1,0 +1,255 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<!-- Small Screen Layout | About Scipio Holding Accordion -->
+    <section id="faq" class="faq">
+      <div class="container-fluid" data-aos="fade-up">
+        <div class="row gy-4">
+          <div
+            class="col-lg-12 d-flex flex-column justify-content-center align-items-stretch order-2 order-lg-1"
+          >
+            <div class="content px-xl-5">
+
+            
+                {% if title %}
+                <h3 class="text-center mt-5">{{title}}</h3>
+                {% else %}
+                <h3 class="text-center mt-5">Investment</h3>
+                {% endif %}
+                       
+            
+            </div>
+  
+
+            <div class="accordion accordion-flush px-xl-5" id="faqlist">
+            
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#{{tab_one_title|slugify}}-investment-sm"
+                  >
+                    {% comment %} <i class="bi bi-question-circle question-icon"></i> {% endcomment %}
+                    {{tab_one_title|upper}}
+                  </button>
+                </h3>
+                <div
+                  id="{{tab_one_title|slugify}}-investment-sm"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqlist"
+                >
+                  <div class="accordion-body">
+                    <div class="">
+                        <div class="row">
+                          <!-- First item -->
+                          {% for searcher in searchers %}
+                        {% include 'investment/searcher-card-sm.html'  with  searcher=searcher %}                          
+                          {% endfor %}
+                          <!-- Add item -->
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+              </div>
+              <!-- # Faq item-->
+  
+            <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#{{tab_two_title|slugify}}-investment-sm"
+                  >
+                    <i class="bi bi-question-circle question-icon"></i>
+                    {{tab_two_title|upper}}
+                  </button>
+                </h3>
+                <div
+                  id="{{tab_two_title|slugify}}-investment-sm"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqlist"
+                >
+                  <div class="accordion-body">
+                    {% for acquisition in acquisitions %}
+                    {% include "investment/acquisition-card-sm.html" with acquisition=acquisition first_item=forloop.first %}
+                    {% endfor %}
+
+                </div>
+                </div>
+              </div>
+            
+              <!-- # Faq item-->
+  
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
+                <h3 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#{{tab_three_title|slugify}}-investment-sm"
+                  >
+                    <i class="bi bi-question-circle question-icon"></i>
+                    {{tab_three_title|upper}}
+                  </button>
+                </h3>
+                <div
+                  id="{{tab_three_title|slugify}}-investment-sm"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqlist"
+                >
+                  <div class="accordion-body">
+                    <div class="text-center">
+                        <p style="color: #a88752">{{subheading}}</p>
+                    </div>
+                    {% for policy in policies %}
+                    {% include "investment/policy-card.html" with policy=policy %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              
+              <!-- # Faq item-->
+            </div>
+          </div>
+        </div>
+      </div>
+  
+
+    </section>
+    <!-- End F.A.Q Section -->
+  
+      <!-- Profile Modal For Searchers -->
+      {% for searcher in searchers %}
+      {% image searcher.image original as searcher_photo %}
+      <div class="modal fade" id="{{searcher|slugify}}-investment-sm" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content" style="border-bottom: 8px solid #EFD9B5;">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="p-3">
+                <div class="">
+                  <div class="text-center">
+                    <img
+                      src="{{searcher_photo.url}}"
+                      class="w-50"
+                      alt=""
+                    />
+                  </div>
+                  <div class="">
+                    <div class="mr-4">
+                      <h1>{{searcher|capfirst}}</h1>
+                      <p style="color: #a88752">{{searcher.role|upper}}</p>
+                      <p>
+                        {{searcher.bio|safe}}
+                      </p>
+                      <a href="{{searcher.linkedin_url}}">
+                        <img
+                          src="{% static 'assets/img/icons/linkedin.svg' %}"
+                          class="h-20"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- End Profile Modal-->
+
+
+      {% for acquisition in acquisitions %}
+      {% image acquisition.image original as logo_img %}
+      {% image acquisition.investor.image original as profile_pic %}
+
+      <div class="modal fade" id="{{acquisition.name|slugify}}-acquisition-sm" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="p-3">
+                <div class="">
+                  <div class="text-center mb-5">
+                    <img
+                      src="{{logo_img.url}}"
+                      class="w-50"
+                      alt=""
+                    />
+                  </div>
+                  <div class="row">
+                    <div class="col-3">
+                      {% comment %} <img
+                        src="assets/img/flags/uk.svg"
+                        class="w-100 rounded-start"
+                        alt=""
+                      /> {% endcomment %}
+                <i class="flag4x {{ acquisition.country.flag_css }}"></i>
+
+                    </div>
+                    <div class="col-9">
+                      <p style="color: #a88752">
+                        Acquistion Date <br /><b>{{acquisition.date}}</b>
+                      </p>
+                    </div>
+                  </div>
+  
+                  {{acquisition.descr|richtext}}
+
+                  <div class="mt-2 mb-4">
+                    {% for tag in acquisition.a_tags.all  %}
+                  <a href="" class="btn custom-tag-btn"
+                      >{{tag}}</a
+                  >
+                  {% endfor %}
+                  </div>                  
+                  
+                  <div style="background-color: #edf6f8" class="p-4">
+                    <div class="row">
+                      <div class="col-3">
+                        <img
+                          src="{{profile_pic.url}}"
+                          class="w-100 rounded-start"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-9">
+                        <p style="color: #a88752">
+                            <b>{{acquisition.investor|upper}}</b><br />
+                            {{acquisition.investor.job_title|upper}}
+                        </p>
+                      </div>
+                    </div>
+  
+                    <div class="pt-2">
+                        {{acquisition.investor.biography|richtext}}
+                    </div>
+  
+                    <!--  -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}

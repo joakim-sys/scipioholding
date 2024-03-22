@@ -1,0 +1,117 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% image page.hero_image original as heroimage %}
+
+<!-- Display Carousel on medium and small screens -->
+<!-- ======= Hero Section ======= -->
+<div
+  id="heroCarousel"
+  data-bs-interval="5000"
+  class="carousel slide carousel-fade"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-inner" role="listbox">
+    <!-- Slide 1 -->
+    <div
+      class="carousel-item active"
+      {% if heroimage %}
+      style="background-image: url({{heroimage.url}})"
+      {% else %}
+      style="background-image: url({% static 'assets/img/hero-bg.png' %})"
+      {% endif %}
+
+    >
+      <div class="carousel-container">
+        <div class="carousel-content animate__animated animate__fadeInUp">
+          {% if page.hero_heading_one %}
+          <h2 class="">{{page.hero_heading_one}}</h2>
+          {% else %}
+          <h2 class="">Safeguarding the legacy of family businesses</h2>
+          {% endif %}          
+          <div class="text-center">
+            {% if page.hero_cta_link %}
+            <a href="{% pageurl page.hero_cta_link %}" class="btn-get-started">
+              {% if page.hero_cta_text %}
+              {{page.hero_cta_text}}
+              {% else %}
+              CALL TO ACTION
+              {% endif %}
+            </a>
+            {% else %}
+            <a href="#about" class="btn-get-started scrollto mt-4">
+              {% if page.hero_cta_text %}
+              {{page.hero_cta_text}}
+              {% else %}
+              CALL TO ACTION
+              {% endif %}
+            </a>
+            {% endif %}
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div
+      class="carousel-item"
+      style="background-image: url({% static 'assets/img/hero-bg.png' %})"
+    >
+      <div class="carousel-container">
+        <div class="carousel-content animate__animated animate__fadeInUp">
+          {% if page.hero_heading_one %}
+          <h2 class="">{{page.hero_heading_two}}</h2>
+          {% else %}
+          <h2 class="">Nurturing the business leaders of tomorrow</h2>
+          {% endif %}
+  
+          <div class="text-center">
+            {% if page.hero_cta_link %}
+            <a href="{% pageurl page.hero_cta_link %}" class="btn-get-started">
+              {% if page.hero_cta_text %}
+              {{page.hero_cta_text}}
+              {% else %}
+              CALL TO ACTION
+              {% endif %}
+            </a>
+            {% else %}
+            <a href="#about" class="btn-get-started scrollto mt-4">
+              {% if page.hero_cta_text %}
+              {{page.hero_cta_text}}
+              {% else %}
+              CALL TO ACTION
+              {% endif %}
+            </a>
+            {% endif %}
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a
+    class="carousel-control-prev"
+    href="#heroCarousel"
+    role="button"
+    data-bs-slide="prev"
+  >
+    <span
+      class="carousel-control-prev-icon bi bi-chevron-left"
+      aria-hidden="true"
+    ></span>
+  </a>
+
+  <a
+    class="carousel-control-next"
+    href="#heroCarousel"
+    role="button"
+    data-bs-slide="next"
+  >
+    <span
+      class="carousel-control-next-icon bi bi-chevron-right"
+      aria-hidden="true"
+    ></span>
+  </a>
+
+  <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+</div>
+<!-- End Hero -->

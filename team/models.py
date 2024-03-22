@@ -19,7 +19,7 @@ from wagtail.admin.panels import (
     PublishingPanel,
 )
 from wagtail.search import index
-from wagtail.fields import StreamField
+from wagtail.fields import StreamField, RichTextField
 from modelcluster.models import ClusterableModel, ParentalKey
 from base.blocks import BaseStreamBlock
 
@@ -49,7 +49,7 @@ class Team(
 ):
     first_name = models.CharField("First name", max_length=254)
     last_name = models.CharField("Last name", max_length=254)
-    job_title = models.CharField("Job title", max_length=254)
+    job_title = models.CharField("Job title", max_length=254,blank=True,null=True)
 
     linkedin_url = models.URLField("LinkedIn URL", null=True, blank=True)
 
@@ -61,9 +61,15 @@ class Team(
         related_name="+",
     )
 
-    bio = StreamField(
-        BaseStreamBlock(), blank=True, verbose_name="biography", use_json_field=True
-    )
+    # bio = StreamField(
+    #     BaseStreamBlock(), blank=True, verbose_name="biography", use_json_field=True
+    # )
+    bio = RichTextField(
+        blank=True,
+        max_length=300,
+        features=["bold", "italic", "link"],
+        )
+
 
     panels = [
         MultiFieldPanel(

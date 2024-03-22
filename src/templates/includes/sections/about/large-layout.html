@@ -1,0 +1,574 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<!-- Only Large Screen Layout | About Scipio Holding Tabs -->
+  <div class="container">
+
+    {% if add_padding %}
+    <div class="mt-5">
+    </div>
+    {% endif %}
+
+    {% if heading %}
+    <h1 class="text-center mb-3 pb-3">{{heading}}</h1>
+    {% else %}
+    <h1 class="text-center mb-3 ">About Scipio Holding</h1>
+    {% endif %}
+
+    <div class="card-body">
+      <ul
+        class="nav nav-tabs nav-tabs-bordered d-flex"
+        id="borderedTabJustified"
+        role="tablist"
+      >
+        {% if tab_one_title %}
+        <li class="nav-item flex-fill" role="presentation">
+          <button
+            class="nav-link w-100 active"
+            id="{{tab_one_title|slugify}}"
+            data-bs-toggle="tab"
+            data-bs-target="#{{tab_one_title|slugify}}-content"
+            type="button"
+            role="tab"
+            aria-controls="{{tab_one_title|slugify}}"
+            aria-selected="true"
+          >
+            {{tab_one_title|upper}}
+          </button>
+        </li>
+        {% else %}
+        <li class="nav-item flex-fill" role="presentation">
+            <button
+              class="nav-link w-100 active"
+              id="home-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#bordered-justified-home"
+              type="button"
+              role="tab"
+              aria-controls="home"
+              aria-selected="true"
+            >
+              OUR STORY
+            </button>
+          </li>
+        {% endif %}
+         
+        {% if tab_two_title %}
+        <li class="nav-item flex-fill" role="presentation">
+            <button
+              class="nav-link w-100"
+              id="{{tab_two_title|slugify}}"
+              data-bs-toggle="tab"
+              data-bs-target="#{{tab_two_title|slugify}}-content"
+              type="button"
+              role="tab"
+              aria-controls="{{tab_two_title|slugify}}"
+              aria-selected="false"
+            >
+              {{tab_two_title|upper}}
+            </button>
+          </li>
+          {% else %}
+          <li class="nav-item flex-fill" role="presentation">
+            <button
+              class="nav-link w-100"
+              id="profile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#bordered-justified-profile"
+              type="button"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+            >
+              OUR TEAM
+            </button>
+          </li>
+          {% endif %}
+        {% if tab_three_title %}
+        <li class="nav-item flex-fill" role="presentation">
+            <button
+              class="nav-link w-100"
+              id="{{tab_three_title|slugify}}"
+              data-bs-toggle="tab"
+              data-bs-target="#{{tab_three_title|slugify}}-content"
+              type="button"
+              role="tab"
+              aria-controls="{{tab_three_title|slugify}}"
+              aria-selected="false"
+            >
+              {{tab_three_title|upper}}
+            </button>
+          </li>
+        {% else %}
+        <li class="nav-item flex-fill" role="presentation">
+            <button
+              class="nav-link w-100"
+              id="contact-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#bordered-justified-contact"
+              type="button"
+              role="tab"
+              aria-controls="contact"
+              aria-selected="false"
+            >
+              OUR ADVISORS
+            </button>
+          </li>
+        {% endif %}
+
+      </ul>
+      <div class="tab-content pt-5" id="borderedTabJustifiedContent">
+        {% if tab_one_title %}
+        <div
+          class="tab-pane fade show active"
+          id="{{tab_one_title|slugify}}-content"
+          role="tabpanel"
+          aria-labelledby="{{tab_one_title|slugify}}"
+        >
+          <div class="row">
+            <div class="col-lg-6">
+                {{body|safe}}
+            </div>
+            <div class="col-lg-6">
+                {% image about_image original as about_image %}
+              <img src="{{about_image.url}}" class="w-100" alt="" />
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <div
+          class="tab-pane fade show active"
+          id="bordered-justified-home"
+          role="tabpanel"
+          aria-labelledby="home-tab"
+        >
+          <div class="row">
+            <div class="col-lg-6">
+              <p class="lead" style="color: #a88752">
+                Scipio was founded on the belief that investing in talent-first
+                is the best way to deliver sustained and superior returns to
+                investors.
+              </p>
+              <p>
+                We invest in talented business professionals and support them as
+                they search for a company to acquire and subsequently run.
+                Scipio is a serialacquirer of small and medium-sized
+                family-owned businesses. In this way, Scipio takes advantage of
+                the growing global trend SMEs that face succession issues to
+                acquire attractive assets at extraordinary prices. Scipio
+                invests globally based on the idea that it seeks to invest in
+                the best-talent wherever they reside.
+              </p>
+              <p>
+                It has built a team of seasoned investors and operators so that
+                it counts on the skills and experience required to support these
+                talented individuals on their journey
+              </p>
+            </div>
+            <div class="col-lg-6">
+              <img src="assets/img/our-story.png" class="w-100" alt="" />
+            </div>
+          </div>
+        </div>
+
+        {% endif %}
+
+        {% if tab_two_title %}
+        <div
+          class="tab-pane fade"
+          id="{{tab_two_title|slugify}}-content"
+          role="tabpanel"
+          aria-labelledby="{{tab_two_title|slugify}}"
+        >
+          <div class="row">
+            <!-- Our Team Card Item 1 -->
+
+            {% for member in members  %}
+            {% image member.image original as member_photo %}
+            {% if forloop.first %}
+            <div class="col-md-4 col-lg-3">
+                <button
+                  class="display-modal-button"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#{{member|slugify}}"
+                >
+                  <div class="card m-2 p-3" style="background-color: #edf6f8">
+                    <div class="pt-4">
+                      <img
+                        src="{{member_photo.url}}"
+                        class="card-img-top rounded-circle"
+                        width="190px"
+                        alt=""
+                      />
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-9 pt-4">
+                        <b class="" style="color: #02839c">{{member|upper}}</b><br>
+                        <p>{{member.job_title}}</p>
+                      </div>
+                      <div class="col-3">
+                        <a href="{{member.linkedin_url}}">
+                            <img
+                            src="{% static 'assets/img/icons/linkedin.svg' %}"
+                            style="width: 100%"
+                            alt=""
+                          />                            
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              
+            {% else %}
+            <div class="col-md-4 col-lg-3">
+                <button
+                  class="display-modal-button"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#{{member|slugify}}"
+                >
+                  <div class="card yellow-card m-2 p-3">
+                    <div class="pt-4">
+                      <img
+                        src="{{member_photo.url}}"
+                        class="card-img-top rounded-circle"
+                        width="190px"
+                        alt=""
+                      />
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-9 pt-4">
+                        <b class="" style="color: #a88752">{{member|upper}}</b>
+                        <p>{{member.job_title}}</p>
+                      </div>
+                      <div class="col-3">
+                        <a href="{{member.linkedin_url}}">
+                            <img
+                            src="{% static 'assets/img/icons/linkedin.svg' %}"
+                            style="width: 100%"
+                            alt=""
+                          />                            
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              </div>
+
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        {% else %}
+        <div
+          class="tab-pane fade"
+          id="bordered-justified-profile"
+          role="tabpanel"
+          aria-labelledby="profile-tab"
+        >
+          <div class="row">
+            <!-- Our Team Card Item 1 -->
+            <div class="col-md-3">
+              <button
+                class="display-modal-button"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#profilemodal"
+              >
+                <div class="card m-2 p-3" style="background-color: #edf6f8">
+                  <div class="pt-4">
+                    <img
+                      src="assets/img/about-img.jpg"
+                      class="card-img-top rounded-circle"
+                      width="190px"
+                      alt=""
+                    />
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-9 pt-4">
+                      <b class="" style="color: #02839c">AITOR SANCHO</b>
+                      <p>Kelsey Winney</p>
+                    </div>
+                    <div class="col-3">
+                      <img
+                        src="assets/img/icons/linkedin.svg"
+                        style="width: 100%"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <!-- Our Team Card Item 1 End -->
+            <!-- Our Team Card Item 2 -->
+            <div class="col-md-3">
+              <button
+                class="display-modal-button"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#profilemodal"
+              >
+                <div class="card yellow-card m-2 p-3">
+                  <div class="pt-4">
+                    <img
+                      src="assets/img/about-img.jpg"
+                      class="card-img-top rounded-circle"
+                      width="190px"
+                      alt=""
+                    />
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-9 pt-4">
+                      <b class="" style="color: #a88752">AITOR SANCHO</b>
+                      <p>Kelsey Winney</p>
+                    </div>
+                    <div class="col-3">
+                      <img
+                        src="assets/img/icons/linkedin.svg"
+                        style="width: 100%"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
+
+            <!-- Our Team Card Item 1 End -->
+          </div>
+        </div>
+
+        {% endif %}
+        {% if tab_three_title %}
+        <div
+          class="tab-pane fade"
+          id="{{tab_three_title|slugify}}-content"
+          role="tabpanel"
+          aria-labelledby="{{tab_three_title|slugify}}"
+        >
+          <div class="row">
+            <!-- Advisor Card Item 1 -->
+            {% for advisor in advisors %}
+            {% image advisor.image original as advisor_photo %}
+            <div class="col-md-4 col-lg-3">
+              <button
+                class="display-modal-button"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#{{advisor|slugify}}"
+              >
+                <div class="card yellow-card m-2 p-3">
+                  <div class="pt-4">
+                    <img
+                      src="{{advisor_photo.url}}"
+                      class="card-img-top rounded-circle"
+                      width="190px"
+                      alt=""
+                    />
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-9 pt-4">
+                      <b class="" style="color: #02839c">{{advisor|upper}}</b>
+                      <p>{{advisor.role|capfirst}}</p>
+                    </div>
+                    <div class="col-3">
+                        {% if advisor.linkedin_url %}
+                        <a href="{{advisor.linkedin_url}}">
+                            <img
+                            src="{% static 'assets/img/icons/linkedin.svg' %}"
+                            style="width: 100%"
+                            alt=""
+                          />
+                        </a>                            
+                        {% else %}
+                        <img
+                        src="{% static 'assets/img/icons/linkedin.svg' %}"
+                        style="width: 100%"
+                        alt=""
+                        />                    
+                        {% endif %}
+                        {% comment %} <img
+                        src="{% static 'assets/img/flags/uk.svg' %}"
+                        style="width: 100%"
+                        class="mt-2"
+                        alt=""
+                      /> {% endcomment %}
+                  <div class="mt-2">
+                    <i class="flag2x {{ advisor.country.flag_css }}"></i>
+                  </div>    
+
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
+            {% endfor %}
+            <!-- Our Team Card Item 1 End -->
+          </div>
+        </div>
+        {% else %}
+        <div
+          class="tab-pane fade"
+          id="bordered-justified-contact"
+          role="tabpanel"
+          aria-labelledby="contact-tab"
+        >
+          <div class="row">
+            <!-- Our Team Card Item 1 -->
+            <div class="col-md-3">
+              <button
+                class="display-modal-button"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#profilemodal"
+              >
+                <div class="card yellow-card m-2 p-3">
+                  <div class="pt-4">
+                    <img
+                      src="assets/img/about-img.jpg"
+                      class="card-img-top rounded-circle"
+                      width="190px"
+                      alt=""
+                    />
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-9 pt-4">
+                      <b class="" style="color: #02839c">AITOR SANCHO</b>
+                      <p>Kelsey Winney</p>
+                    </div>
+                    <div class="col-3">
+                      <img
+                        src="assets/img/icons/linkedin.svg"
+                        style="width: 100%"
+                        alt=""
+                      />
+                      <img
+                        src="assets/img/icons/linkedin.svg"
+                        style="width: 100%"
+                        class="mt-2"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <!-- Our Team Card Item 1 End -->
+          </div>
+        </div>
+
+        {% endif %}
+      </div>
+      <!-- End Bordered Tabs Justified -->
+    </div>
+
+
+    <!-- Profile Modals here -->
+
+    <!-- Team Members Profile Modals -->
+    {% for member in members  %}
+    {% image member.image original as member_image %}
+    <div class="modal fade" id="{{member|slugify}}" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content" style="border-bottom: 8px solid #EFD9B5;" >
+            {% comment %} style="height: 500px" {% endcomment %}
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="p-5">
+              <div class="row">
+                <div class="col-4">
+                  <img
+                    src="{{member_image.url}}"
+                    class=" rounded-start img-fluid"
+                    alt=""
+                  />
+                </div>
+                <div class="col-6">
+                  <div class="mr-4">
+                    <h1>{{member|capfirst}}</h1>
+                    <p>{{member.job_title}}</p>
+
+                    {% if member.bio %}
+                    {{member.bio|richtext}}
+                    {% endif %}  
+
+                    <a href="{{member.linkedin_url}}">
+                        <img
+                        src="{% static 'assets/img/icons/linkedin.svg' %}"
+                        class="h-20"
+                        alt=""
+                      />  
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <!-- End Team Members Modal-->
+
+    <!-- Advisor Profile Modals -->
+    {% for advisor in advisors  %}
+    {% image advisor.image original as advisor_image %}
+    <div class="modal fade" id="{{advisor|slugify}}" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content" style="border-bottom: 8px solid #EFD9B5;" >
+            {% comment %} style="height: 500px" {% endcomment %}
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="p-5">
+              <div class="row">
+                <div class="col-4">
+                  <img
+                    src="{{advisor_image.url}}"
+                    class=" rounded-start img-fluid"
+                    alt=""
+                  />
+                </div>
+                <div class="col-6">
+                  <div class="mr-4">
+                    <h1>{{advisor|capfirst}}</h1>
+                    <p>{{advisor.role}}</p>
+
+                    {% if advisor.bio %}
+                    {{advisor.bio|richtext}}
+                    {% endif %}  
+                      
+                    <a href="{{advisor.linkedin_url}}">
+                        <img
+                        src="{% static 'assets/img/icons/linkedin.svg' %}"
+                        class="h-20"
+                        alt=""
+                      />  
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <!-- End Team Members Modal-->
+
+</div>

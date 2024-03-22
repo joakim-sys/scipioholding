@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+
+{% block content %}
+
+{% include 'investment/searcher-card-sm.html' with searcher=object first_item=1  %}
+
+{% endblock content %}
+

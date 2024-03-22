@@ -2,7 +2,14 @@
 <!--  -->
 {% load wagtailcore_tags %}
 <!--  -->
-{% block body_class %}template-standardpage{% endblock %} {% block content %}
+{% block body_class %}template-standardpage{% endblock %}
+
+{% block header %}
+{% include "includes/sections/header/header.html" %}
+{% endblock header %}
+
+{% block content %}
+
 
 <section>
   <div class="container">

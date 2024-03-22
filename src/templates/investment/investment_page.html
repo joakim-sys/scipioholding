@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<style>
+    /* Default light theme */
+    body {
+        /* font-family: "Open Sans", sans-serif; */
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        color: #444444;
+      }
+      
+    /* Dark theme for large screens */
+    @media (min-width: 768px) {
+        body {
+            background-color: #1E1E1E;
+            color: #3C434B;
+        }
+
+        .nav-tabs-bordered {
+  /* border-bottom: 2px solid #ebeef4; */
+  border-bottom: 2px solid #5c5c5e;
+
+}
+
+.nav-tabs-bordered .nav-link {
+  margin-bottom: -2px;
+  border: none;
+  color: #a0a8b1;
+}
+
+.nav-tabs-bordered .nav-link:hover,
+.nav-tabs-bordered .nav-link:focus {
+  color: #8b9eb5;
+}
+
+.nav-tabs-bordered .nav-link.active {
+  /* background-color: #fff; */
+  background-color: transparent;
+  color: #02839c;
+  border-bottom: 2px solid #02839c;
+}
+
+.nav-pills .nav-link.active {
+  /* background-color: #edf6f8; */
+  background-color: transparent;
+  color: #3c434b;
+  font-weight: bold;
+}
+
+.nav-pills .nav-link {
+  /* background-color: white; */
+  background-color: transparent;
+  color: #3c434b;
+  text-align: left;
+  font-size: smaller;
+}
+
+
+    }
+
+
+</style>
+
+{% endblock extra_css %}
+
+
+{% block header %}
+{% include "includes/sections/header/header.html" %}
+{% endblock header %}
+
+{% block content %}
+{% include "includes/sections/investment/investment.html" with tab_one_title=page.tab_one_title tab_two_title=page.tab_two_title tab_three_title=page.tab_three_title searchers=page.searchers acquisitions=page.acquisitions policies=page.policies subheading=page.subheading add_padding=1 title=page.title %}
+{% endblock content %}
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock footer %}

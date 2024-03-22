@@ -6,7 +6,7 @@ from wagtail.fields import RichTextField, StreamField
 
 from modelcluster.fields import ParentalKey
 from base.models import AboutPage
-from investments.models import InvestmentsPage
+from investment.models import InvestmentPage
 from strategies.models import StrategyPage
 
 
@@ -89,7 +89,7 @@ class HomePage(Page):
         return aboutpage
 
     def investments_page_content(self):
-        investments_page = InvestmentsPage.objects.filter(live=True).first()
+        investments_page = InvestmentPage.objects.filter(live=True).first()
         return investments_page
 
     def strategy_page_content(self):

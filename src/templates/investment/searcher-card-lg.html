@@ -1,0 +1,54 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% image searcher.image original as searcher_photo %}
+<div class="col-md-4 col-lg-3">
+  <button
+    class="display-modal-button"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#{{searcher|slugify}}-searcher-lg"
+  >
+    <div class="card {% if first_item %} soft-blue-card {% else %}yellow-card{% endif %} m-2 p-3">
+      <div class="pt-4">
+        <img
+          src="{{searcher_photo.url}}"
+          class="card-img-top rounded-circle"
+          width="190px"
+          alt=""
+        />
+      </div>
+      <div class="row mt-3">
+        <div class="col-9 pt-4">
+          <b class="" style="color: #02839c">{{searcher.role|upper}}</b>
+          <p>{{searcher}}</p>
+        </div>
+        <div class="col-3">
+          {% if searcher.linkedin_url %}
+          <a href="{{searcher.linkedin_url}}">
+            <img
+              src="{% static 'assets/img/icons/linkedin.svg' %}"
+              style="width: 100%"
+              alt=""
+            />
+          </a>
+          {% else %}
+          <img
+            src="{% static 'assets/img/icons/linkedin.svg' %}"
+            style="width: 100%"
+            alt=""
+          />
+          {% endif %}
+          {% comment %} <img
+            src="{% static 'assets/img/flags/uk.svg' %}"
+            style="width: 100%"
+            class="mt-2"
+            alt=""
+          /> {% endcomment %}
+          <div class="mt-2">
+            <i class="flag2x {{ searcher.country.flag_css }}"></i>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </button>
+</div>

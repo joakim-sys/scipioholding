@@ -3,6 +3,11 @@
 {% load wagtailcore_tags wagtailimages_tags navigation_tags crispy_forms_tags %}
 
 <!--  -->
+{% block header %}
+{% include "includes/sections/header/header.html" %}
+{% endblock header %}
+
+
 {% block content %} {% with title=page.title introduction=page.introduction body=page.body %}
 <section>
   <div class="container">

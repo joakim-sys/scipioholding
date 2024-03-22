@@ -20,7 +20,7 @@ from wagtail.admin.panels import (
     PublishingPanel,
 )
 from wagtail.search import index
-from wagtail.fields import StreamField
+from wagtail.fields import StreamField, RichTextField
 from modelcluster.models import ClusterableModel, ParentalKey
 from base.blocks import BaseStreamBlock
 
@@ -51,10 +51,15 @@ class Advisor(
 ):
     first_name = models.CharField("First name", max_length=254)
     last_name = models.CharField("Last name", max_length=254)
-    role = models.CharField("Role", max_length=254)
+    role = models.CharField("Role", max_length=254,null=True,blank=True)
     country = CountryField()
     linkedin_url = models.URLField("LinkedIn URL", null=True, blank=True)
     x_url = models.URLField("X URL", null=True, blank=True)
+    bio = RichTextField(
+        blank=True,
+        max_length=300,
+        features=["bold", "italic", "link"],
+        )
 
     image = models.ForeignKey(
         "wagtailimages.Image",
@@ -76,15 +81,16 @@ class Advisor(
             ],
             "Name",
         ),
-        FieldPanel("image"),
-        FieldPanel("role"),
         FieldPanel("country"),
+        FieldPanel("role"),
+        FieldPanel('bio'),
+        FieldPanel("image"),
         MultiFieldPanel(
             [
                 FieldRowPanel(
                     [
                         FieldPanel("linkedin_url"),
-                        FieldPanel("x_url"),
+                        # FieldPanel("x_url"),
                     ]
                 )
             ],

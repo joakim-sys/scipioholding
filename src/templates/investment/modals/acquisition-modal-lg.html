@@ -1,0 +1,71 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% image acquisition.image original as logo_img %}
+{% image acquisition.investor.image original as profile_pic %}
+<div class="modal fade" id="{{acquisition.name|slugify}}-acquisition-lg" tabindex="-1">
+<div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+    <div class="modal-header">
+        <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+        ></button>
+    </div>
+    <div class="modal-body">
+        <div class="p-2">
+        <div class="row">
+            <div class="col-4">
+            <img
+                src="{{logo_img.url}}"
+                class="w-100"
+                alt=""
+            />
+            </div>
+            <div class="col-6">
+            <div class="mr-2">
+                <div class="block mb-1">
+                {% comment %} <img src="{% static "assets/img/flags/uk.svg" %}" alt="" /> {% endcomment %}
+                {% comment %} <img src="{{acquisition.country.flag}}" alt="" /> {% endcomment %}
+                <i class="flag4x {{ acquisition.country.flag_css }}"></i>
+                </div>
+                <p style="color: #a88752">
+                Acquisition Date <b>{{acquisition.date}}</b>
+                </p>
+                <p>
+                    {{acquisition.descr|richtext}}
+                </p>
+
+                {% comment %} TODO: Configure Tags {% endcomment %}
+                <div class="mt-2">
+                  {% for tag in acquisition.a_tags.all  %}
+                <a href="" class="btn custom-tag-btn"
+                    >{{tag}}</a
+                >
+                {% endfor %}
+                </div>
+            </div>
+            </div>
+        </div>
+        <div
+            class="row mt-4 p-4"
+            style="background-color: #edf6f8"
+        >
+            <div class="col-md-4">
+            <img src="{{profile_pic.url}}" alt="" />
+            </div>
+            <div class="col-md-8">
+            <p style="color: #a88752">
+                <b>{{acquisition.investor|upper}}</b>,{{acquisition.investor.job_title|upper}}
+            </p>
+            <p>
+                {{acquisition.investor.biography|richtext}}
+            </p>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>

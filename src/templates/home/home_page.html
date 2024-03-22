@@ -2,17 +2,21 @@
 {% load static %}
 
 
-{% block title %}Scopio Holdi{% endblock title %}
+{% block title %}Scopio Holding{% endblock title %}
 {% block body_class %}template-homepage{% endblock %}
 
-{% block hero %}{% include "includes/sections/hero2.html" %}{% endblock hero %}
+{% block header %}{% include 'includes/sections/header/header.html' %}{% endblock %}
+
+
+{% block hero %}{% include "includes/sections/hero/hero.html" %}{% endblock hero %}
+
 
 
 {% block content %}
+{% include "includes/sections/about/about.html" with tab_one_title=aboutpage_content.tab_one_title tab_two_title=aboutpage_content.tab_two_title tab_three_title=aboutpage_content.tab_three_title about_image=aboutpage_content.image body=aboutpage_content.body heading=aboutpage_content.heading members=aboutpage_content.team_members advisors=aboutpage_content.advisors add_padding=0 %}
+{% include "includes/sections/strategy/strategy.html" with tab_one_title=strategy_page_content.tab_one_title tab_two_title=strategy_page_content.tab_two_title tab_three_title=strategy_page_content.tab_three_title tab_four_title=strategy_page_content.tab_four_title tab_one_content=strategy_page_content.tab_one_content tab_two_content=strategy_page_content.tab_two_content tab_three_content=strategy_page_content.tab_three_content tab_four_content=strategy_page_content.tab_four_content introduction=strategy_page_content.introduction title=strategy_page_content.title %}
+{% include "includes/sections/investment/investment.html" with tab_one_title=investments_page_content.tab_one_title tab_two_title=investments_page_content.tab_two_title tab_three_title=investments_page_content.tab_three_title searchers=investments_page_content.searchers acquisitions=investments_page_content.acquisitions policies=investments_page_content.policies subheading=investments_page_content.subheading add_padding=0 title=investments_page_content.title %}
 
-{% include "includes/sections/about.html" %}
-{% include "includes/sections/strategy.html" %}
-{% include "includes/sections/investments.html" %}
 {% endblock content %}
 
 {% block footer %}

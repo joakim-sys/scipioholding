@@ -1,0 +1,228 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<!-- Only Large Screen Layout | About Scipio Holding Tabs -->
+  <div class="container">
+
+    {% if add_padding %}
+    <div class="mt-5">
+    </div>
+    {% endif %}
+
+    {% if title %}
+    <h1 class="text-center mb-3 pb-3">{{title}}</h1>
+    {% else %}
+    <h1 class="text-center mb-3 ">Investment</h1>
+    {% endif %}
+
+    <div class="card-body">
+      <ul
+        class="nav nav-tabs nav-tabs-bordered d-flex"
+        id="borderedTabJustified"
+        role="tablist"
+      >
+        <li class="nav-item flex-fill" role="presentation">
+          <button
+            class="nav-link w-100 active"
+            id="{{tab_one_title|slugify}}-investment-sm"
+            data-bs-toggle="tab"
+            data-bs-target="#{{tab_one_title|slugify}}-investment-sm-content"
+            type="button"
+            role="tab"
+            aria-controls="{{tab_one_title|slugify}}-investment-sm"
+            aria-selected="true"
+          >
+            {{tab_one_title|upper}}
+          </button>
+        </li>
+         
+        <li class="nav-item flex-fill" role="presentation">
+            <button
+              class="nav-link w-100"
+              id="{{tab_two_title|slugify}}-investment-sm"
+              data-bs-toggle="tab"
+              data-bs-target="#{{tab_two_title|slugify}}-investment-sm-content"
+              type="button"
+              role="tab"
+              aria-controls="{{tab_two_title|slugify}}-investment-sm"
+              aria-selected="false"
+            >
+              {{tab_two_title|upper}}
+            </button>
+          </li>
+        <li class="nav-item flex-fill" role="presentation">
+            <button
+              class="nav-link w-100"
+              id="{{tab_three_title|slugify}}-investment-sm"
+              data-bs-toggle="tab"
+              data-bs-target="#{{tab_three_title|slugify}}-investment-sm-content"
+              type="button"
+              role="tab"
+              aria-controls="{{tab_three_title|slugify}}-investment-sm"
+              aria-selected="false"
+            >
+              {{tab_three_title|upper}}
+            </button>
+          </li>
+      </ul>
+      <div class="tab-content pt-5" id="borderedTabJustifiedContent">
+        <div
+          class="tab-pane fade show active"
+          id="{{tab_one_title|slugify}}-investment-sm-content"
+          role="tabpanel"
+          aria-labelledby="{{tab_one_title|slugify}}-investment-sm"
+        >
+        <div class="row">
+            <!-- Advisor Card Item 1 -->
+            {% for searcher in searchers %}
+            {% image searcher.image original as searcher_photo %}
+            {% if forloop.first %}
+            {% include "investment/searcher-card-lg.html" with first_item=forloop.first searcher=searcher %}
+            {% else %}
+            {% include "investment/searcher-card-lg.html" with first_item=forloop.first searcher=searcher %}
+            {% endif %}
+            {% endfor %}
+            <!-- Our Team Card Item 1 End -->
+          </div>
+
+    </div>
+
+        <div
+          class="tab-pane fade"
+          id="{{tab_two_title|slugify}}-investment-sm-content"
+          role="tabpanel"
+          aria-labelledby="{{tab_two_title|slugify}}-investment-sm"
+        >
+        <div class="row">
+            <!-- Aquisition 1 -->
+            {% for acquisition in acquisitions %}
+
+            {% include "investment/acquisition-card-lg.html" with first_item=forloop.first acquisition=acquisition %}
+
+
+            {% endfor %}
+            <!-- End Aquisition -->
+          </div>
+          <div class="text-center mt-4">
+            <button class="btn see-more-btn">SEE MORE</button>
+          </div>
+
+    </div>
+
+        <div
+          class="tab-pane fade"
+          id="{{tab_three_title|slugify}}-investment-sm-content"
+          role="tabpanel"
+          aria-labelledby="{{tab_three_title|slugify}}-investment-sm"
+        >
+        <div class="container">
+          <div class="row">
+            <div class="col text-center px-6">
+              <p class="">
+                We invest in Search Funds, looking for great business models
+                managed by professionals who share our values and our vision
+                on business
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Policy 1 -->
+          {% for policy in policies %}
+          <div class="col-md-4 col-lg-4">
+            <div class="m-2 p-3" style="background-color: transparent">
+              <div class="row">
+                <div class="col-2">
+                  {% if policy.icon %}
+                  <i class="bi {{policy.icon|lower}}"></i>
+                  {% else %}
+                  <img
+                  src="{% static 'assets/img/icons/globe.svg' %}"
+                  class=""
+                  alt=""
+                  style="width: 100%"
+                />
+
+                  {% endif %}
+                </div>
+                <div class="col-10">
+                  <b style="color: #a88752">{{policy.name|capfirst}}</b><br>
+                  {{policy.descr|richtext}}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          <!-- End Policy 1 -->
+        </div>
+
+
+      </div>
+      </div>
+      <!-- End Bordered Tabs Justified -->
+    </div>
+
+
+    <!-- Profile Modals here -->
+
+
+    <!-- Searcher Profile Modals -->
+    {% for searcher in searchers  %}
+    {% image searcher.image original as searcher_image %}
+    <div class="modal fade" id="{{searcher|slugify}}-searcher-lg" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content" style="border-bottom: 8px solid #EFD9B5;" >
+            {% comment %} style="height: 500px" {% endcomment %}
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="p-5">
+              <div class="row">
+                <div class="col-4">
+                  <img
+                    src="{{searcher_image.url}}"
+                    class=" rounded-start img-fluid"
+                    alt=""
+                  />
+                </div>
+                <div class="col-6">
+                  <div class="mr-4">
+                    <h1>{{searcher|capfirst}}</h1>
+                    <p>{{searcher.role}}</p>
+
+                    {% if searcher.bio %}
+                    {{searcher.bio|richtext}}
+                    {% endif %}  
+                      
+                    <a href="{{searcher.linkedin_url}}">
+                        <img
+                        src="{% static 'assets/img/icons/linkedin.svg' %}"
+                        class="h-20"
+                        alt=""
+                      />  
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <!-- End Searchers Modal-->
+
+
+    <!-- Acquisition Modal here -->
+    {% for acquisition in acquisitions %}
+    {% include "investment/modals/acquisition-modal-lg.html" with acquisition=acquisition %}
+    {% endfor %}
+
+
+
+</div>

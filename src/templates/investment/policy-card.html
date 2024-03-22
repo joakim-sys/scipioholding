@@ -1,0 +1,18 @@
+{% load static wagtailcore_tags %}
+<div class="mb-4">
+  <div class="text-center">
+    {% if policy.icon %}
+    <i class="bi {{policy.icon|lower}}"></i>
+    {% else %}
+    <img
+      src="{% static 'assets/img/icons/globe.svg' %}"
+      class=""
+      alt=""
+      style="width: 100%"
+    />
+  </div>
+  {% endif %}
+
+  <h4 style="color: #a88752">{{policy.name|capfirst}}</h4>
+  {{policy.descr|richtext}}
+</div>

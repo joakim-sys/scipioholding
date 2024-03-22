@@ -1,0 +1,33 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+{% image acquisition.image original as logo_img %}
+
+<div class="{% if first_item %}soft-blue-card {% else %}yellow-card{% endif %}">
+  <button
+    class="display-modal-button"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#{{acquisition|slugify}}-acquisition-sm"
+  >
+  
+  <div class="m-2 p-2">
+      <div class="row">
+        <div class="col-3">
+          <img
+            src="{{logo_img.url}}"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+        <div class="col-6">
+          <p style="color: #a88752">{{acquisition.investor|upper}}</p>
+          <p>{{acquisition.country.name}}</p>
+        </div>
+        <div class="col-3">
+            {% if first_item %}
+            <img src="{% static 'assets/img/icons/right_arrow.svg' %}" alt="" />
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </button>
+</div>

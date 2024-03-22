@@ -1,0 +1,60 @@
+{% load wagtailcore_tags %}
+
+<!-- Display Banner layout on Large screens -->
+
+<!-- ======= Hero Section ======= -->
+<section
+  id="hero"
+  class="d-flex flex-column justify-content-center align-items-center"
+>
+  <div class="container text-center text-md-left" data-aos="fade-up">
+    <!-- <h1>Welcome to Maxim</h1> -->
+    <div class="row d-flex-row">
+      <div class="d-flex col-md-5 align-items-center">
+        {% if page.hero_heading_one %}
+        <h1 class="">{{page.hero_heading_one}}</h1>
+        {% else %}
+        <h1 class="">Safeguarding the legacy of family businesses</h1>
+        {% endif %}
+      </div>
+      <div class="col-md-2">
+        <span
+          style="
+            border-left: 2px solid rgba(245, 245, 245, 0.477);
+            height: 250px;
+            display: inline-block;
+          "
+        ></span>
+      </div>
+      <div class="d-flex align-items-center col-md-5">
+        {% if page.hero_heading_one %}
+        <h1 class="">{{page.hero_heading_two}}</h1>
+        {% else %}
+        <h1 class="">Nurturing the business leaders of tomorrow</h1>
+        {% endif %}
+
+      </div>
+    </div>
+    {% comment %} Uncomment to add subheading {% endcomment %}
+    <!-- <h2></h2> -->
+    
+    {% if page.hero_cta_link %}
+    <a href="{% pageurl page.hero_cta_link %}" class="btn-get-started mt-4">
+      {% if page.hero_cta_text %}
+      {{page.hero_cta_text}}
+      {% else %}
+      CALL TO ACTION
+      {% endif %}
+    </a>
+    {% else %}
+    <a href="#about" class="btn-get-started scrollto mt-4">
+      {% if page.hero_cta_text %}
+      {{page.hero_cta_text}}
+      {% else %}
+      CALL TO ACTION
+      {% endif %}
+    </a>
+    {% endif %}
+  </div>
+</section>
+<!-- End Hero -->

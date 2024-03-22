@@ -1,0 +1,114 @@
+<!-- Strategy Section | Large Screen Layout -->
+    <div class="container">
+      <!-- Vertical Pills Tabs -->
+      <div class="align-items-start">
+        <div class="row">
+          <div class="col-4">
+            <h1>{{title}}</h1>
+            <div class="pb-2 pt-2">
+              <hr />
+            </div>
+  
+            <p>
+            {{introduction}}
+            </p>
+  
+            <div
+              class="nav flex-column nav-pills me-3"
+              id="v-pills-tab"
+              role="tablist"
+              aria-orientation="vertical"
+            >
+              <button
+                class="nav-link active"
+                id="{{tab_one_title|slugify}}-lg"
+                data-bs-toggle="pill"
+                data-bs-target="#{{tab_one_title|slugify}}-lg-content"
+                type="button"
+                role="tab"
+                aria-controls="{{tab_one_title|slugify}}-lg"
+                aria-selected="true"
+              >
+                {{tab_one_title|upper}}
+              </button>
+              <button
+                class="nav-link"
+                id="{{tab_two_title|slugify}}-lg"
+                data-bs-toggle="pill"
+                data-bs-target="#{{tab_two_title|slugify}}-lg-content"
+                type="button"
+                role="tab"
+                aria-controls="{{tab_two_title|slugify}}-lg"
+                aria-selected="false"
+              >
+              {{tab_two_title|upper}}
+              </button>
+              <button
+                class="nav-link"
+                id="{{tab_three_title|slugify}}-lg"
+                data-bs-toggle="pill"
+                data-bs-target="#{{tab_three_title|slugify}}-lg-content"
+                type="button"
+                role="tab"
+                aria-controls="{{tab_three_title|slugify}}-lg"
+                aria-selected="false"
+              >
+                {{tab_three_title|upper}}
+              </button>
+              <button
+                class="nav-link"
+                id="{{tab_four_title|slugify}}-lg"
+                data-bs-toggle="pill"
+                data-bs-target="#{{tab_four_title|slugify}}-lg-content"
+                type="button"
+                role="tab"
+                aria-controls="{{tab_four_title|slugify}}-lg"
+                aria-selected="false"
+              >
+                {{tab_four_title|upper}}
+              </button>
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="tab-content mx-4 px-6" id="v-pills-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="{{tab_one_title|slugify}}-lg-content"
+                role="tabpanel"
+                aria-labelledby="{{tab_one_title|slugify}}-lg"
+              >
+              {{tab_one_content}}
+
+              </div>
+              <div
+                class="tab-pane fade"
+                id="{{tab_two_title|slugify}}-lg-content"
+                role="tabpanel"
+                aria-labelledby="{{tab_two_title|slugify}}-lg"
+              >
+              {{tab_two_content}}
+              </div>
+              <div
+                class="tab-pane fade"
+                id="{{tab_three_title|slugify}}-lg-content"
+                role="tabpanel"
+                aria-labelledby="{{tab_three_title|slugify}}-lg"
+              >
+              {{tab_three_content}}
+
+              </div>
+              <div
+                class="tab-pane fade"
+                id="{{tab_four_title|slugify}}-lg-content"
+                role="tabpanel"
+                aria-labelledby="{{tab_four_title|slugify}}-lg"
+              >
+              {{tab_four_content}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Vertical Pills Tabs -->
+    </div>
+  
